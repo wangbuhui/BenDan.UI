@@ -1,18 +1,16 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+     <Alert type="success">
+        文馨提示：
+        <template slot="desc">首页还未完善，尽情期待... </template>
+    </Alert>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
-
-@Component({
-  components: {
-    HelloWorld
+<script>
+  export default {
+    
   }
-})
-export default class Home extends Vue {}
 </script>
+
+<style scoped>
+
+</style>
