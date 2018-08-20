@@ -1,62 +1,74 @@
-<style scoped>
-    .layout{
-        border: 1px solid #d7dde4;
-        background: #f5f7f9;
-        position: relative;
-        border-radius: 4px;
-        overflow: hidden;
-    }
-    .layout-header-bar{
-        background: #fff;
-        box-shadow: 0 1px 1px rgba(0,0,0,.1);
-    }
-</style>
 <template>
-    <div class="layout">
-        <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto',background:'#FFF'}">
-            <div style="height:'65px';line-height:65px;background:#71216F;color:#FFF;text-align:center;boxShadow:'0 2px 3px 2px #f1f1f1' ">
-            <h2>Bendan Admin</h2>
-            </div>
-            <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
-                <Submenu name="1">
-                    <template slot="title">
-                        <Icon type="ios-navigate"></Icon>
-                        Item 1
-                    </template>
-                    <MenuItem name="1-1">Option 1</MenuItem>
-                    <MenuItem name="1-2">Option 2</MenuItem>
-                    <MenuItem name="1-3">Option 3</MenuItem>
-                </Submenu>
-                <Submenu name="2">
-                    <template slot="title">
-                        <Icon type="ios-keypad"></Icon>
-                        Item 2
-                    </template>
-                    <MenuItem name="2-1">Option 1</MenuItem>
-                    <MenuItem name="2-2">Option 2</MenuItem>
-                </Submenu>
-                <Submenu name="3">
-                    <template slot="title">
-                        <Icon type="ios-analytics"></Icon>
-                        Item 3
-                    </template>
-                    <MenuItem name="3-1">Option 1</MenuItem>
-                    <MenuItem name="3-2">Option 2</MenuItem>
-                </Submenu>
-            </Menu>
-        </Sider>
-        <Layout :style="{marginLeft: '200px'}">
-            <Header :style="{background: '#FFF', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)',padding:'0 10px'}">
-                  <Icon type="md-menu" size="20"></Icon>
-            </Header>
-            <Content :style="{padding: '0 16px 16px'}">
-                <div style="height:400px;"></div>
-            </Content>
-        </Layout>
-    </div>
+    <a-layout style="height: 100vh" id="admin-layout">
+        <a-layout-sider :trigger="null" collapsible v-model="collapsed" :width="256">
+            <div class="logo" />
+            <a-menu theme="dark" :defaultSelectedKeys="['1']" mode="inline">
+                <a-menu-item key="1">
+                    <a-icon type="pie-chart" />
+                    <span>Option 1</span>
+                </a-menu-item>
+                <a-menu-item key="2">
+                    <a-icon type="desktop" />
+                    <span>Option 2</span>
+                </a-menu-item>
+                <a-sub-menu key="sub1">
+                    <span slot="title">
+                        <a-icon type="user" />
+                        <span>User</span>
+                    </span>
+                    <a-menu-item key="3">Tom</a-menu-item>
+                    <a-menu-item key="4">Bill</a-menu-item>
+                    <a-menu-item key="5">Alex</a-menu-item>
+                </a-sub-menu>
+                <a-sub-menu key="sub2">
+                    <span slot="title">
+                        <a-icon type="team" />
+                        <span>Team</span>
+                    </span>
+                    <a-menu-item key="6">Team 1</a-menu-item>
+                    <a-menu-item key="8">Team 2</a-menu-item>
+                </a-sub-menu>
+                <a-menu-item key="9">
+                    <a-icon type="file" />
+                    <span>File</span>
+                </a-menu-item>
+            </a-menu>
+        </a-layout-sider>
+        <a-layout>
+            <a-layout-header style="background: #fff; padding: 0">
+                <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="()=> collapsed = !collapsed" />
+            </a-layout-header>
+            <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
+                Content
+            </a-layout-content>
+        </a-layout>
+    </a-layout>
 </template>
 <script>
-    export default {
-        
-    }
+export default {
+  data() {
+    return {
+      collapsed: false
+    };
+  }
+};
 </script>
+<style>
+#admin-layout .trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+#admin-layout .trigger:hover {
+  color: #1890ff;
+}
+
+#admin-layout .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+</style>

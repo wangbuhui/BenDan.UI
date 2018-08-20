@@ -1,16 +1,12 @@
 <template>
-     <Alert type="success">
-        文馨提示：
-        <template slot="desc">首页还未完善，尽情期待... </template>
-    </Alert>
+    <div>
+     <a-alert message="文馨提示："  description="首页还未完善，尽情期待..." type="info"/>
+    </div>
 </template>
 
 <script>
-  export default {
-    
-  }
+export default {};
 </script>
 
 <style scoped>
-
 </style>
