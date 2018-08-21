@@ -2,12 +2,15 @@
     <a-layout style="height: 100vh" id="admin-layout">
         <a-layout-sider :trigger="null" collapsible v-model="collapsed" :width="256">
             <div class="admin-logo">
-                <img :src="logo">
+                <img :src="logo" v-if="collapsed"/>  
+           
+                 <img  v-if="!collapsed"  class="maxlogo" :src="maxlogo"/>
+            
             </div>
             <a-menu theme="dark" :defaultSelectedKeys="['1']" mode="inline">
                 <a-menu-item key="1">
                     <a-icon type="pie-chart" />
-                    <span>Option 1</span>
+                    <span>仪表盘</span>
                 </a-menu-item>
                 <a-menu-item key="2">
                     <a-icon type="desktop" />
@@ -48,11 +51,13 @@
 </template>
 <script>
 import logo from '@/assets/logo.png';
+import maxlogo from '@/assets/maxlogo.png';
 export default {
   data() {
     return {
       collapsed: false,
-      logo
+      logo,
+      maxlogo
     };
   }
 };
@@ -72,8 +77,14 @@ export default {
 
 #admin-layout .admin-logo {
   height: 64px;
+  line-height: 64px;
+  text-align: center;
+ 
   img {
-       width: 100%;
+      height: 56px;  
+         border-radius: 10px;  
   }
 }
+
+
 </style>
