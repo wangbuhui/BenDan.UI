@@ -1,7 +1,9 @@
 <template>
     <a-layout style="height: 100vh" id="admin-layout">
         <a-layout-sider :trigger="null" collapsible v-model="collapsed" :width="256">
-            <div class="logo" />
+            <div class="admin-logo">
+                <img :src="logo">
+            </div>
             <a-menu theme="dark" :defaultSelectedKeys="['1']" mode="inline">
                 <a-menu-item key="1">
                     <a-icon type="pie-chart" />
@@ -45,15 +47,17 @@
     </a-layout>
 </template>
 <script>
+import logo from '@/assets/logo.png';
 export default {
   data() {
     return {
-      collapsed: false
+      collapsed: false,
+      logo
     };
   }
 };
 </script>
-<style>
+<style lang="less">
 #admin-layout .trigger {
   font-size: 18px;
   line-height: 64px;
@@ -66,9 +70,10 @@ export default {
   color: #1890ff;
 }
 
-#admin-layout .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
+#admin-layout .admin-logo {
+  height: 64px;
+  img {
+       width: 100%;
+  }
 }
 </style>
